@@ -2,7 +2,8 @@ CREATE TABLE restaurants (
   id        SERIAL PRIMARY KEY,
   name      TEXT NOT NULL,
   cuisine   TEXT NOT NULL,
-  area      TEXT NOT NULL
+  area      TEXT NOT NULL,
+  dine_in   BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE reviews (
@@ -13,8 +14,8 @@ CREATE TABLE reviews (
   created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
-INSERT INTO restaurants (name, cuisine, area) VALUES
-  ('Ludhiana Burrito', 'Indian', 'Sector 32');
+INSERT INTO restaurants (name, cuisine, area, dine_in) VALUES
+  ('Ludhiana Burrito', 'Indian', 'Sector 32', TRUE);
 
 INSERT INTO reviews (restaurant_id, rating, comment, created_at) VALUES
   (1, 5, 'Paneer burrito is unreal', NOW() - INTERVAL '8 days'),

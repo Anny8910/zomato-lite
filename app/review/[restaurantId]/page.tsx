@@ -2,6 +2,7 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import ReviewForm from "@/components/ReviewForm";
+import DineInTag from "@/components/DineInTag";
 
 export default async function ReviewPage({
   params,
@@ -41,8 +42,11 @@ export default async function ReviewPage({
 
       <header>
         <h1 className="text-2xl font-bold leading-tight">Write a review</h1>
-        <p className="mt-1 text-sm text-muted">
-          {data.name} · {data.cuisine}, {data.area}
+        <p className="mt-1 flex flex-wrap items-center gap-2 text-sm text-muted">
+          {data.dineIn === true && <DineInTag />}
+          <span>
+            {data.name} · {data.cuisine}, {data.area}
+          </span>
         </p>
       </header>
 

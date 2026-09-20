@@ -16,7 +16,7 @@ export async function GET(
   const sql = neon(process.env.DATABASE_URL!);
 
   const restaurant = await sql`
-    SELECT name, cuisine, area
+    SELECT name, cuisine, area, dine_in
     FROM restaurants
     WHERE id = ${restaurantId}
   `;
@@ -53,6 +53,7 @@ export async function GET(
     name: restaurant[0].name,
     cuisine: restaurant[0].cuisine,
     area: restaurant[0].area,
+    dineIn: restaurant[0].dine_in === true,
     averageRating:
       aggregate[0].average_rating === null ? null : Number(aggregate[0].average_rating),
     totalReviews: aggregate[0].total,
