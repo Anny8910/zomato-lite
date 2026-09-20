@@ -49,15 +49,18 @@ export async function GET(
   const latestReview = allReviews.length > 0 ? shapeReview(allReviews[0]) : null;
   const olderReviews = allReviews.slice(1).map(shapeReview);
 
-  return NextResponse.json({
-    name: restaurant[0].name,
-    cuisine: restaurant[0].cuisine,
-    area: restaurant[0].area,
-    dineIn: restaurant[0].dine_in === true,
-    averageRating:
-      aggregate[0].average_rating === null ? null : Number(aggregate[0].average_rating),
-    totalReviews: aggregate[0].total,
-    latestReview,
-    reviews: olderReviews,
-  });
+  return NextResponse.json(
+    {
+      name: restaurant[0].name,
+      cuisine: restaurant[0].cuisine,
+      area: restaurant[0].area,
+      dineIn: restaurant[0].dine_in === true,
+      averageRating:
+        aggregate[0].average_rating === null ? null : Number(aggregate[0].average_rating),
+      totalReviews: aggregate[0].total,
+      latestReview,
+      reviews: olderReviews,
+    },
+    { headers: { "Cache-Control": "no-store" } }
+  );
 }
