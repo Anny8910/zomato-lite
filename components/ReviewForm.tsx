@@ -41,9 +41,9 @@ export default function ReviewForm({ restaurantId }: { restaurantId: number }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-8">
-      <label className="text-sm font-medium">Your rating</label>
-      <div className="mt-2 flex gap-2">
+    <form onSubmit={handleSubmit} className="mt-6">
+      <label className="block text-base font-semibold">Rate your experience</label>
+      <div className="mt-3 flex gap-3">
         {STARS.map((star) => {
           const selected = rating !== null && star <= rating;
           return (
@@ -52,7 +52,7 @@ export default function ReviewForm({ restaurantId }: { restaurantId: number }) {
               type="button"
               aria-label={`${star} star${star === 1 ? "" : "s"}`}
               onClick={() => setRating(star)}
-              className={`text-3xl leading-none transition-colors ${
+              className={`text-4xl leading-none transition-colors ${
                 selected ? "text-accent" : "text-line hover:text-accent/60"
               }`}
             >
@@ -62,7 +62,7 @@ export default function ReviewForm({ restaurantId }: { restaurantId: number }) {
         })}
       </div>
 
-      <label htmlFor="comment" className="mt-8 block text-sm font-medium">
+      <label htmlFor="comment" className="mt-8 block text-base font-semibold">
         Your comment
       </label>
       <textarea
@@ -71,11 +71,11 @@ export default function ReviewForm({ restaurantId }: { restaurantId: number }) {
         onChange={(e) => setComment(e.target.value)}
         rows={4}
         placeholder="How was the food? The service?"
-        className="mt-2 w-full rounded-lg border border-line bg-white px-4 py-3 text-sm outline-none focus:border-accent"
+        className="mt-3 w-full rounded-xl border border-line bg-surface px-4 py-3 text-base outline-none transition-colors focus:border-accent"
       />
 
       {error !== null && (
-        <p className="mt-4 rounded-lg bg-accent-soft px-4 py-3 text-sm text-accent">
+        <p className="mt-4 rounded-xl bg-accent-soft px-4 py-3 text-sm font-medium text-accent">
           {error}
         </p>
       )}
@@ -83,7 +83,7 @@ export default function ReviewForm({ restaurantId }: { restaurantId: number }) {
       <button
         type="submit"
         disabled={!canSubmit}
-        className="mt-6 inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-40"
+        className="mt-6 w-full rounded-xl bg-accent px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-40"
       >
         Submit review
       </button>

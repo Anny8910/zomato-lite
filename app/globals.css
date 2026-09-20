@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #faf7f2;
-  --foreground: #1c1b18;
-  --accent: #b5492d;
-  --accent-soft: #f3e4dd;
-  --muted: #6b675f;
-  --line: #e5dfd6;
+  --background: #ffffff;
+  --surface: #ffffff;
+  --foreground: #1c1c1c;
+  --accent: #e23744;
+  --accent-soft: #fdecec;
+  --muted: #696969;
+  --line: #efefef;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);

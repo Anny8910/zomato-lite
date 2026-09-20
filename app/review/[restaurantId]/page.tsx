@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import ReviewForm from "@/components/ReviewForm";
@@ -25,9 +26,21 @@ export default async function ReviewPage({
   const data = await res.json();
 
   return (
-    <main className="mx-auto w-full max-w-[560px] px-5 py-12">
-      <header className="border-b border-line pb-6">
-        <h1 className="text-2xl font-semibold">Write a review</h1>
+    <main className="mx-auto w-full max-w-[560px] px-4 py-6 sm:px-5">
+      <header className="mb-6 flex items-center justify-between border-b border-line pb-4">
+        <Link href="/" className="text-lg font-bold tracking-tight text-accent">
+          Zomato&nbsp;Lite
+        </Link>
+        <Link
+          href={`/restaurant/${restaurantId}`}
+          className="text-sm font-medium text-muted hover:text-accent"
+        >
+          Back to restaurant
+        </Link>
+      </header>
+
+      <header>
+        <h1 className="text-2xl font-bold leading-tight">Write a review</h1>
         <p className="mt-1 text-sm text-muted">
           {data.name} · {data.cuisine}, {data.area}
         </p>
